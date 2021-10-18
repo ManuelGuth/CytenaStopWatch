@@ -11,11 +11,10 @@ namespace GrpcServer.Services
         private readonly ILogger<StopwatchService> _logger;
         private System.Diagnostics.Stopwatch _stopwatch;
 
-        public StopwatchService(ILogger<StopwatchService> logger, System.Diagnostics.Stopwatch stopwatch)
+        public StopwatchService(ILogger<StopwatchService> logger)
         {
             _logger = logger;
-            _stopwatch = stopwatch;
-            Console.WriteLine("Init");
+            _stopwatch = new System.Diagnostics.Stopwatch();
         }
 
         public override Task<ElapsedTimeMilliseconds> GetElapsedTimeMilliseconds(GetTime request, ServerCallContext context)
