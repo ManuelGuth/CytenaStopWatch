@@ -1,0 +1,25 @@
+To Do:
+    1. Einlesen in Client Server Strukturen.
+        - Multi client on same server object
+    2. REST/GRCP API einlesen
+        - API call zum starten/stoppen und auslesen der Zeit + Status
+GRPC-Client:
+	- Adresse des channels in appsync.json packen um es in der Laufzeit ändern zu können.
+
+Diskussion:
+- API Schnittstelle
+    - OPTIONAL: Eine Swagger/OpenAI Beschreibung davon
+- Automatisierte API Tests
+    - OPTIONAL Ein Metrik Endpunkt bzw. was um den Status auszugeben. Ich wurde /status machen der 200 zurück gibt und ein /metrics..
+    - OPTIONAL  OAuth2 (das wird vorraussichtlich das komplizierteste zu verstehen. Abhängig von der genauen Anforderung lässt du das Weg oder nimmst ne Alternative.)
+    - OPTIONAL Das ganze packst du dann in einen Docker Container und ließt dir was zu CI / CD durch.
+- Du ließt dir was zu "Microservices" durch und "Serverless". Kann sein, dass die nichts davon machen aber dann weißt du was es ist. Wenn die in der Cloud sind wird das relevant.
+
+Generell wollen die auch sehen was du in wenig Zeit schaffst und was dir dabei wichtig ist.
+Im Grunde sollte es wichtiger sein das was du machst sauber zu machen als eine überausführliche API zu bauen.
+Also würde ich ein sauberes Grundgerüst bauen statt API Routen für alles mögliche.
+Ich willst zeigen, dass ich:
+1. die gängigen Techniken kann
+2. mich eingelesen habe
+3. verstehst wie man so eine API strukturiert
+4. verstehst was man tun muss damit die API professionell ist (tests, dokumentation, Zugangskontrolle)

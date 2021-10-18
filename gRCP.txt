@@ -1,0 +1,12 @@
+(google) Remote Procedure Call
+
+Server:
+	service + gRPC server benötigt.
+Client:
+	einfacher Stub der nur gRCP aufruft.
+
+Der typische gRPC-Workflow gliedert sich in vier Schritte:
+   1. Definition des Servicevertrags für die Interprozesskommunikation: Die aufzusetzenden Services sowie grundlegende Parameter und Rückgabetypen, die per Remote aufgerufen werden können, werden bestimmt.
+   2. Erzeugung des gRPC-Codes aus der .proto-Datei: Spezielle Compiler (Kommandozeilenwerkzeuge mit dem Namen „protoc“) generieren aus gespeicherten .proto-Dateien den operativen Code mit den entsprechenden Klassen für eine gewünschte Zielsprache (z. B. C++, Java).
+   3. Implementierung des Servers in der gewählten Sprache.
+   4. Erstellung des Client Stubs, der den Service aufruft; anschließend wird bzw. werden die Anfrage(n) über Server und Client(s) abgewickelt.
