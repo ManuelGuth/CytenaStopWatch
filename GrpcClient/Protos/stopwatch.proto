@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+service Stopwatch {
+	rpc Start (StartTime) returns (EmptyResponse);
+	rpc Stop (StopTime) returns (EmptyResponse);
+	rpc GetElapsedTimeMilliseconds (GetTime) returns (ElapsedTimeMilliseconds);
+	rpc GetCurrentStatus (GetStatus) returns (Status);
+}
+
+message StartTime {
+}
+
+message StopTime {
+}
+
+message GetTime {
+}
+
+message GetStatus {
+}
+
+message EmptyResponse {
+
+}
+
+message Status {
+	bool isRunning = 1;
+}
+
+message ElapsedTimeMilliseconds {
+	int64 milliseconds = 1;
+}
