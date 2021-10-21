@@ -8,6 +8,7 @@ using System.Windows.Input;
 namespace GrpcClientUi
 {
     /// <summary>
+    /// Provides function delegation for UI. E.g. button klicks can be mapped to a function in the ViewModel.
     /// Idea for class implementation taken from https://www.wpftutorial.net/DelegateCommand.html
     /// </summary>
     class DelegateCommand : ICommand

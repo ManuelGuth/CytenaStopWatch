@@ -9,9 +9,9 @@ namespace GrpcClient
         private GrpcChannel _Channel;
         private Stopwatch.StopwatchClient _StopwatchClient;
 
-        public StopwatchClientHelper()
+        public StopwatchClientHelper(string adress="https://localhost:5001")
         {
-            _Channel = GrpcChannel.ForAddress("https://localhost:5001"); // TODO: einlesbar machen von appsetting oder so
+            _Channel = GrpcChannel.ForAddress(adress);
             _StopwatchClient = new Stopwatch.StopwatchClient(_Channel);
         }
         /// <summary>
@@ -20,7 +20,7 @@ namespace GrpcClient
         public async void Start()
         {
             var start = new StartTime();
-            Console.WriteLine("Start timing."); // TODO: Logging optional
+            Console.WriteLine("Start timing.");
             await _StopwatchClient.StartAsync(start);
         }
 

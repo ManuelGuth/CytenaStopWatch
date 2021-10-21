@@ -1,5 +1,4 @@
-﻿using Grpc.Net.Client;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +8,8 @@ namespace GrpcClient
     {
         static async Task Main(string[] args)
         {
+            // Only for testing while developing -> Use GrpcClientUi!
+
             var stopwatchHelper = new StopwatchClientHelper();
             stopwatchHelper.Start();
 

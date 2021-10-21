@@ -8,42 +8,40 @@ namespace GrpcServer.Services
 {
     public class StopwatchService : Stopwatch.StopwatchBase
     {
-        private readonly ILogger<StopwatchService> _logger;
-        private System.Diagnostics.Stopwatch _stopwatch;
+        private System.Diagnostics.Stopwatch _Stopwatch;
 
-        public StopwatchService(ILogger<StopwatchService> logger)
+        public StopwatchService()
         {
-            _logger = logger;
-            _stopwatch = new System.Diagnostics.Stopwatch();
+            _Stopwatch = new System.Diagnostics.Stopwatch();
         }
 
         public override Task<ElapsedTimeMilliseconds> GetElapsedTimeMilliseconds(GetTime request, ServerCallContext context)
         {
-            var elapsedTime = new ElapsedTimeMilliseconds { Milliseconds = _stopwatch.ElapsedMilliseconds };
+            var elapsedTime = new ElapsedTimeMilliseconds { Milliseconds = _Stopwatch.ElapsedMilliseconds };
             return Task.FromResult(elapsedTime);
         }
 
         public override Task<EmptyResponse> Start(StartTime request, ServerCallContext context)
         {
-            if (!_stopwatch.IsRunning) 
+            if (!_Stopwatch.IsRunning)
             {
-                _stopwatch.Start();
+                _Stopwatch.Start();
             }
             return Task.FromResult(new EmptyResponse());
         }
 
         public override Task<EmptyResponse> Stop(StopTime request, ServerCallContext context)
         {
-            if (_stopwatch.IsRunning)
+            if (_Stopwatch.IsRunning)
             {
-                _stopwatch.Stop();
+                _Stopwatch.Stop();
             }
             return Task.FromResult(new EmptyResponse());
         }
 
         public override Task<Status> GetCurrentStatus(GetStatus request, ServerCallContext context)
         {
-            var isRunning = _stopwatch.IsRunning;
+            var isRunning = _Stopwatch.IsRunning;
             return Task.FromResult(new Status{ IsRunning = isRunning });
         }
     }

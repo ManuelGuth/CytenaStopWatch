@@ -1,26 +1,21 @@
 ﻿using GrpcClient;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
-using System.Windows.Input;
 
 namespace GrpcClientUi
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
-        StopwatchClientHelper stopwatchClientHelper;
-        private Timer refreshTimer;
+        StopwatchClientHelper _StopwatchClientHelper;
+        private Timer _RefreshTimer;
         public MainWindowViewModel()
         {
             Status = "";
             Time = "";
 
-            stopwatchClientHelper = new StopwatchClientHelper();
+            _StopwatchClientHelper = new StopwatchClientHelper();
 
             StopCommand = new DelegateCommand(
                 o => true,
@@ -35,29 +30,29 @@ namespace GrpcClientUi
             InitRefreshTimer();
         }
 
-        string status;
+        string _Status;
         public string Status
         {
-            get => status;
+            get => _Status;
             set
             {
-                if (status != value)
+                if (_Status != value)
                 {
-                    status = value;
+                    _Status = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        string time;
+        string _Time;
         public string Time
         {
-            get => time;
+            get => _Time;
             set
             {
-                if (time != value)
+                if (_Time != value)
                 {
-                    time = value;
+                    _Time = value;
                     RaisePropertyChanged();
                 }
             }
@@ -70,18 +65,16 @@ namespace GrpcClientUi
 
         public void InitRefreshTimer()
         {
-            // Create a timer with a 200 milliseconds interval.
-            refreshTimer = new Timer(200);
-            // Hook up the Elapsed event for the timer. 
-            refreshTimer.Elapsed += RefreshTimerEvent;
-            refreshTimer.AutoReset = true;
-            refreshTimer.Enabled = true;
+            _RefreshTimer = new Timer(200);
+            _RefreshTimer.Elapsed += RefreshTimerEvent;
+            _RefreshTimer.AutoReset = true;
+            _RefreshTimer.Enabled = true;
         }
 
         private async void RefreshTimerEvent(Object source, ElapsedEventArgs e)
         {
-            var isRunning = await stopwatchClientHelper.IsRunning();
-            var time = await stopwatchClientHelper.GetTimeInMS();
+            var isRunning = await _StopwatchClientHelper.IsRunning();
+            var time = await _StopwatchClientHelper.GetTimeInMS();
 
             Time = FormatTime(time);
             Status = isRunning ? "Running" : "Stopped";
@@ -95,12 +88,12 @@ namespace GrpcClientUi
 
         public void StartButtonKlick()
         {
-            stopwatchClientHelper.Start();
+            _StopwatchClientHelper.Start();
         }
 
         public void StopButtonKlick()
         {
-            stopwatchClientHelper.Stop();
+            _StopwatchClientHelper.Stop();
         }
 
         private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
