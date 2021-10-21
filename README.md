@@ -5,9 +5,9 @@ Coding Challenge for interview on 22.10.
 To use the stopwatch the server needs to run and the (multiple) clients need to run on the same machine since currently 
 only localhost can be used as address.
 ## PreBuilt
-* Use the *StopwatchServer.exe* shortcut in the base folder to start the server
-* Use the *StopwatchClient.exe* shortcut in the base folder to start as many stopwatch instances as you like.
-* The executables can also be found in the *executables* folder.
+* Use the *StopwatchServer.exe* in *\executables\server* to start the server
+* Use the *StopwatchClient.exe* in *\executables\client* to start as many stopwatch instances as you like.
+
 
 ## Build yourself
 * Open *StopWatchService\Stopwatch.sln* with visual studio (I used VS19)
