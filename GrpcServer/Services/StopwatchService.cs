@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace GrpcServer.Services
 {
+    /// <summary>
+    /// Implements a GRPC server service that implements the stopwatch function using the system intern stopwatch.
+    /// </summary>
     public class StopwatchService : Stopwatch.StopwatchBase
     {
         private System.Diagnostics.Stopwatch _Stopwatch;

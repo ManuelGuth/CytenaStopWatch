@@ -63,6 +63,9 @@ namespace GrpcClientUi
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// A timer is used to frquently connect to the server and update the status as a quick solution.
+        /// </summary>
         public void InitRefreshTimer()
         {
             _RefreshTimer = new Timer(200);
@@ -71,6 +74,11 @@ namespace GrpcClientUi
             _RefreshTimer.Enabled = true;
         }
 
+        /// <summary>
+        /// gets the current time and status from the server.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private async void RefreshTimerEvent(Object source, ElapsedEventArgs e)
         {
             var isRunning = await _StopwatchClientHelper.IsRunning();
@@ -80,6 +88,11 @@ namespace GrpcClientUi
             Status = isRunning ? "Running" : "Stopped";
         }
 
+        /// <summary>
+        /// Formats the time to hour:minute:second format
+        /// </summary>
+        /// <param name="timeInMs"></param>
+        /// <returns></returns>
         private string FormatTime(long timeInMs)
         {
             TimeSpan ts = TimeSpan.FromMilliseconds(timeInMs);
@@ -96,6 +109,10 @@ namespace GrpcClientUi
             _StopwatchClientHelper.Stop();
         }
 
+        /// <summary>
+        /// Notifies the UI that the passed property has changede and needs to be updated in the view
+        /// </summary>
+        /// <param name="propertyName"></param>
         private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (!string.IsNullOrEmpty(propertyName))

@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace GrpcClient
 {
+    /// <summary>
+    /// Class to handle client side communication with the server.
+    /// </summary>
     public class StopwatchClientHelper
     {
         private GrpcChannel _Channel;
