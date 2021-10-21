@@ -1,6 +1,22 @@
 # CytenaStopWatch
 Coding Challenge for interview on 22.10.
 
+# How to run
+To use the stopwatch the server needs to run and the (multiple) clients need to run on the same machine since currently 
+only localhost can be used as address.
+## PreBuilt
+* Use the *StopwatchServer.exe* shortcut in the base folder to start the server
+* Use the *StopwatchClient.exe* shortcut in the base folder to start as many stopwatch instances as you like.
+* The executables can also be found in the *executables* folder.
+
+## Build yourself
+* Open *StopWatchService\Stopwatch.sln* with visual studio (I used VS19)
+* Build the entire *Stopwatch* solution
+* right click solution in VS -> *Set Startup Projects...* 
+* In *Common Properties* click *Startup Project* select *Multiple Startup Projects*
+* Select *GrpcServer* with action *Start* as first in order and *GrpcClientUi* with action *Start* below it.
+* When clicking start now both the UI and the server should start.
+
 # Coding Challenge
 
 You shall develop a stop-watch client server solution satisfying the following requirements:
@@ -16,5 +32,3 @@ You shall develop a stop-watch client server solution satisfying the following r
 * You have one week to complete your task
 
 Do not focus on UI. It is not important to present a nice UI. It's about software design, clean code and architecture. Think about testability. How would you test your solution. Be prepared to explain your solution.
-
-# How to run
